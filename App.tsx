@@ -5,8 +5,8 @@ import { translations } from './translations';
 import LoginPage from './pages/LoginPage';
 import AdminPage from './pages/AdminPage';
 import { NotificationProvider, useNotification } from './components/Notification';
-// Import types for TypeScript support
-
+import { ThemeContext, LanguageContext, AuthContext, DataContext } from './context';
+import LandingPage from './pages/LandingPage';
 
 // --- API Configuration ---
 const API_URL = ((import.meta as any).env?.VITE_API_URL as string) || (
@@ -18,12 +18,6 @@ const API_URL = ((import.meta as any).env?.VITE_API_URL as string) || (
 console.log("Configured API_URL:", API_URL);
 
 // --- Context Definitions ---
-
-import { ThemeContext, LanguageContext, AuthContext, DataContext } from './context';
-
-// --- API Configuration ---
-
-import LandingPage from './pages/LandingPage';
 
 const AppContent: React.FC = () => {
     const { isAuthenticated, idToken, currentUser } = useContext(AuthContext);
