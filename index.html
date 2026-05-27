@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OnlineAll Kiosk System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script src="https://unpkg.com/html5-qrcode" type="text/javascript"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3/dist/JsBarcode.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1/build/qrcode.min.js"></script>
+
+    <script>
+      // Add data-label to table cells for responsive display
+      document.addEventListener('DOMContentLoaded', () => {
+        const updateTables = () => {
+          document.querySelectorAll('.responsive-table').forEach(table => {
+            const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent.trim());
+            table.querySelectorAll('tbody tr').forEach(tr => {
+              Array.from(tr.querySelectorAll('td')).forEach((td, index) => {
+                if (headers[index] && !td.hasAttribute('data-label')) {
+                  td.setAttribute('data-label', headers[index]);
+                }
+              });
+            });
+          });
+        };
+        const observer = new MutationObserver(updateTables);
+        observer.observe(document.body, { childList: true, subtree: true });
+        updateTables();
+      });
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              primary: {"50":"#eff6ff","100":"#dbeafe","200":"#bfdbfe","300":"#93c5fd","400":"#60a5fa","500":"#3b82f6","600":"#2563eb","700":"#1d4ed8","800":"#1e40af","900":"#1e3a8a","950":"#172554"}
+            }
+          }
+        }
+      }
+    </script>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "dotenv": "https://aistudiocdn.com/dotenv@^17.2.3",
+    "process": "https://aistudiocdn.com/process@^0.11.10",
+    "firebase/compat/app": "data:text/javascript,export default window.firebase;",
+    "firebase/compat/auth": "data:text/javascript,",
+    "firebase/compat/firestore": "data:text/javascript,",
+    "firebase-admin": "https://aistudiocdn.com/firebase-admin@^12.1.0",
+    "express": "https://aistudiocdn.com/express@^5.1.0",
+    "cors": "https://aistudiocdn.com/cors@^2.8.5",
+    "firebase/": "https://aistudiocdn.com/firebase@^12.6.0/",
+    "firebase-admin/": "https://aistudiocdn.com/firebase-admin@^13.6.0/",
+    "fs": "https://aistudiocdn.com/fs@^0.0.1-security"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

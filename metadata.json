@@ -1,0 +1,7 @@
+{
+  "name": "OnlineAll Kiosk System_frontend_26_05_2026",
+  "description": "A comprehensive kiosk management system to handle products, clients, and sales, featuring barcode/QR code scanning capabilities for efficient inventory management.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
